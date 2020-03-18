@@ -37,7 +37,7 @@ It has one constructor :
 #### It has three instance methods:
 
 - public List **getWordsOrderedAlphabetically** ():
-  - calls FilePartReader.readLines ()
+  - calls **FilePartReader.readLines** ()
   - returns the words ordered by alphabetically as an ArrayList
 - public List **getWordsContainingSubstring** (String `subString` ):
   - calls **FilePartReader.readLines** ()
