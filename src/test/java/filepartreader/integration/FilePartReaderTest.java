@@ -69,7 +69,7 @@ class FilePartReaderTest {
     }
 
     @Test
-    public void readLinesThrowsIOExceptionWhenFileDoesNotExist() throws IOException {
+    public void readLinesThrowsIOExceptionWhenFileDoesNotExist() {
         FilePartReader reader = new FilePartReader();
         reader.setup("non-existing-file.txt", 1, 1);
 

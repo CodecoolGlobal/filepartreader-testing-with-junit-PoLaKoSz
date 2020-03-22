@@ -4,6 +4,7 @@ import filepartreader.FilePartReader;
 import filepartreader.FileWordAnalyzer;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FileWordAnalyzerTest {
 
     @Test
-    public void getWordsOrderedAlphabeticallyRemovesPunctuation() {
+    public void getWordsOrderedAlphabeticallyRemovesPunctuation() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("with-punctuation.txt");
 
         List<String> actual = analyzer.getWordsOrderedAlphabetically();
@@ -24,7 +25,7 @@ class FileWordAnalyzerTest {
     }
 
     @Test
-    public void getWordsOrderedAlphabeticallyFromReverseOrder() {
+    public void getWordsOrderedAlphabeticallyFromReverseOrder() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("reversed-list.txt");
 
         List<String> actual = analyzer.getWordsOrderedAlphabetically();
@@ -34,7 +35,7 @@ class FileWordAnalyzerTest {
     }
 
     @Test
-    public void getWordsOrderedAlphabeticallyFromCorrectOrder() {
+    public void getWordsOrderedAlphabeticallyFromCorrectOrder() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("ordered-list.txt");
 
         List<String> expected = getExpectedAlphabeticList();
@@ -44,7 +45,7 @@ class FileWordAnalyzerTest {
     }
 
     @Test
-    public void getWordsOrderedAlphabeticallyFromUnorderedList() {
+    public void getWordsOrderedAlphabeticallyFromUnorderedList() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("unordered-list.txt");
 
         List<String> expected = getExpectedAlphabeticList();
@@ -54,7 +55,7 @@ class FileWordAnalyzerTest {
     }
 
     @Test
-    public void getWordsContainingSubstringRemovesPunctuation() {
+    public void getWordsContainingSubstringRemovesPunctuation() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("ordered-list.txt");
 
         List<String> actual = analyzer.getWordsContainingSubstring("app");
@@ -64,7 +65,7 @@ class FileWordAnalyzerTest {
     }
 
     @Test
-    public void getWordsContainingSubstringWithoutMatch() {
+    public void getWordsContainingSubstringWithoutMatch() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("ordered-list.txt");
 
         List<String> expected = new ArrayList<>();
@@ -74,7 +75,7 @@ class FileWordAnalyzerTest {
     }
 
     @Test
-    public void getWordsContainingSubstringWithMatches() {
+    public void getWordsContainingSubstringWithMatches() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("ordered-list.txt");
 
         List<String> expected = new ArrayList<>(Arrays.asList("dog", "door"));
@@ -84,7 +85,7 @@ class FileWordAnalyzerTest {
     }
 
     @Test
-    public void getStringsWhichPalindromesRemovesPunctuation() {
+    public void getStringsWhichPalindromesRemovesPunctuation() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("with-palindromes-and-punctuations.txt");
 
         List<String> expected = new ArrayList<>(Arrays.asList("madam", "noon", "anna"));
@@ -94,7 +95,7 @@ class FileWordAnalyzerTest {
     }
 
     @Test
-    public void getStringsWhichPalindromesCasesInsensitive() {
+    public void getStringsWhichPalindromesCasesInsensitive() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("with-uppercase-palindromes.txt");
 
         List<String> expected = new ArrayList<>(Arrays.asList("nOoN", "Anna", "MaDaM"));
@@ -104,7 +105,7 @@ class FileWordAnalyzerTest {
     }
 
     @Test
-    public void getStringsWhichPalindromesWithNoResult() {
+    public void getStringsWhichPalindromesWithNoResult() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("without-palindromes.txt");
 
         List<String> actual = analyzer.getStringsWhichPalindromes();
@@ -113,7 +114,7 @@ class FileWordAnalyzerTest {
     }
 
     @Test
-    public void getStringsWhichPalindromesWithResults() {
+    public void getStringsWhichPalindromesWithResults() throws IOException {
         FileWordAnalyzer analyzer = getAnalyzerFor("with-palindromes.txt");
 
         List<String> expected = new ArrayList<>(Arrays.asList("madam", "noon", "anna"));
